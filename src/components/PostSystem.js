@@ -1,11 +1,15 @@
 import MenuBar from './MenuBar';
 import PostManager from "./PostManager";
+import PostButton from './PostButton';
 
 function PostSystem(props) {
     return (
-        <div>
+        <div class='position-relative h-100'>
             <MenuBar />
             <PostManager />
+            <div class='position-absolute' style={{bottom:0, right:0}}>
+                <PostButton/>
+            </div>
         </div>
     );
 }
