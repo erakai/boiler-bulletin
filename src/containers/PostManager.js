@@ -14,11 +14,11 @@ function getPostsWithScore(posts) {
 
 function PostManager({posts}) {
     const numberSort = function (a,b) {
-        return a - b;
+        return a - (b + .0001);
     };
     const postsWithScore = getPostsWithScore(posts);
     const sortedScores = Object.keys(postsWithScore).sort(numberSort).reverse();
-    
+    console.log(sortedScores)
     return (
         <div>
             <br />
