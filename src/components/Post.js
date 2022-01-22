@@ -12,9 +12,9 @@ function Post({post}) {
     return (
         <Card>
             <Card.Body>
-                <Container className="d-flex justify-content-center">
+                <Container className="justify-content-center">
                     <Row className="border">
-                        <Col className="border">
+                        <Col xs lg="2" className="border">
                             <img
                             alt=""
                             src={logo}
@@ -23,8 +23,8 @@ function Post({post}) {
                             className="img-fluid"
                             />{' '}
                         </Col>
-                        <Col className="border">{post.title}</Col>
-                        <Col className="border ml-auto">
+                        <Col className="border"><a href={post.link}>{post.title}</a></Col>
+                        <Col xs lg="2" className="border ml-auto">
                             <span className="text-right">{post.votes}</span>
                         </Col>
                     </Row>
