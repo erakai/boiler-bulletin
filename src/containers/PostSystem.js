@@ -1,6 +1,6 @@
 import MenuBar from './MenuBar';
 import PostManager from "./PostManager";
-import PostButton from './PostButton';
+import PostButton from '../components/PostButton';
 
 function PostSystem(props) {
     return (
