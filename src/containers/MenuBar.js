@@ -1,7 +1,7 @@
 import { Container, Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 
-function MenuBar() {
+function MenuBar({posts}) {
     return (
         <>
             <Navbar bg="light" variant="light" expand="lg">

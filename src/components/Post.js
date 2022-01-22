@@ -1,7 +1,31 @@
-import { Card, Container, Row, Col } from "react-bootstrap";
+import React, { useState } from 'react'
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import logo from "../assets/logo.svg"
+import { updatePost } from "../utils/FirebaseManager";
+import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md";
 
-function Post(props) {
+const Post = ({postId, post}) => {
+    const [hasVoted, setVoted] = useState(false)
+
+    if (typeof post == 'undefined') {
+        post = {
+            title: "None",
+            votes: "0"
+        }
+    }
+
+    const onUpvote = () => {
+        setVoted(true);
+        post.votes += 1;
+        updatePost(postId, post);
+    }
+
+    const onDownvote = () => {
+        setVoted(true);
+        post.votes -= 1;
+        updatePost(postId, post);
+    }
+        
     return (
         <Card>
             <Card.Body>
@@ -16,9 +40,11 @@ function Post(props) {
                             className="img-fluid"
                             />{' '}
                         </Col>
-                        <Col className="border">Title</Col>
+                        <Col className="border">{post.title}</Col>
                         <Col className="border ml-auto">
-                            <span className="text-right">10</span>
+                            <Button variant="primary-outline"  onClick={onUpvote} disabled={hasVoted}><MdOutlineKeyboardArrowUp /></Button>
+                            <span className="text-right">{post.votes}</span>
+                            <Button variant="danger-outline" onClick={onDownvote} disabled={hasVoted}><MdOutlineKeyboardArrowDown /></Button>
                         </Col>
                     </Row>
                 </Container>
