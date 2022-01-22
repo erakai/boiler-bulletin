@@ -29,9 +29,9 @@ const Post = ({postId, post}) => {
     return (
         <Card>
             <Card.Body>
-                <Container className="d-flex justify-content-center">
+                <Container className="justify-content-center">
                     <Row className="border">
-                        <Col className="border">
+                        <Col xs lg="2" className="border">
                             <img
                             alt=""
                             src={logo}
@@ -39,9 +39,9 @@ const Post = ({postId, post}) => {
                             height="100"
                             className="img-fluid"
                             />{' '}
-                        </Col>
-                        <Col className="border">{post.title}</Col>
-                        <Col className="border ml-auto">
+                        </Col>                        
+                        <Col className="border"><a href={post.link}>{post.title}</a></Col>
+                        <Col xs lg="2" className="border ml-auto">
                             <Button variant="primary-outline"  onClick={onUpvote} disabled={hasVoted}><MdOutlineKeyboardArrowUp /></Button>
                             <span className="text-right">{post.votes}</span>
                             <Button variant="danger-outline" onClick={onDownvote} disabled={hasVoted}><MdOutlineKeyboardArrowDown /></Button>

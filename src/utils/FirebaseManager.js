@@ -12,6 +12,7 @@ const post = {
     type:
     votes:
     description:
+    tags: []
 }
 
 Eventually add tags, description, group size.
@@ -30,7 +31,8 @@ export function writePost(postId, post) {
         date: post.date,
         type: post.type,
         votes: post.votes,
-        description: post.description
+        description: post.description,
+        tags: post.tags
     });
 }
 
