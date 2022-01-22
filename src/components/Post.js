@@ -4,20 +4,21 @@ import logo from "../assets/logo.svg"
 function Post(props) {
     return (
         <Card>
-            <Card.Body className="">
-                <Container className="mx-auto d-flex">
-                    <Row>
-                        <Col>
+            <Card.Body>
+                <Container className="d-flex justify-content-center">
+                    <Row className="border">
+                        <Col className="border">
                             <img
                             alt=""
                             src={logo}
-                            width="50"
-                            height="50"
-                            className=""
+                            width="100"
+                            height="100"
+                            className="img-fluid"
                             />{' '}
                         </Col>
-                        <Col className="">
-                            <p>Title</p>
+                        <Col className="border">Title</Col>
+                        <Col className="border ml-auto">
+                            <span className="text-right">10</span>
                         </Col>
                     </Row>
                 </Container>
