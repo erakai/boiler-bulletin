@@ -35,7 +35,7 @@ const PostButton = () => {
 
     return (
         <div> 
-            <button type="button" class="btn justify-content-center align-items-center btn-primary btn-lg"
+            <button type="button" className="btn justify-content-center align-items-center btn-primary btn-lg mr-5"
                onClick={() => {setOpen(true)}}>Post</button>
 
             <Modal show={open} onHide={() => {setOpen(false)}}>

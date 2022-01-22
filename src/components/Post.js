@@ -1,7 +1,14 @@
 import { Card, Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/logo.svg"
 
-function Post(props) {
+function Post({post}) {
+    if (typeof post == 'undefined') {
+        post = {
+            title: "None",
+            votes: "0"
+        }
+    }
+        
     return (
         <Card>
             <Card.Body>
@@ -16,9 +23,9 @@ function Post(props) {
                             className="img-fluid"
                             />{' '}
                         </Col>
-                        <Col className="border">Title</Col>
+                        <Col className="border">{post.title}</Col>
                         <Col className="border ml-auto">
-                            <span className="text-right">10</span>
+                            <span className="text-right">{post.votes}</span>
                         </Col>
                     </Row>
                 </Container>
