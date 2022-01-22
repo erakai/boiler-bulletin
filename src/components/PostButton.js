@@ -24,8 +24,8 @@ const PostButton = () => {
         var tagsList = tags.split(',')
         tagsList.push(type)
         tagsList.push(title)
-        tagsList.map(s => s.toLowerCase().trim())
-            
+        var newList = tagsList.map(s => s.toLowerCase().trim())
+
         const post = {
             title: title,
             link: link,
@@ -33,7 +33,12 @@ const PostButton = () => {
             type: type,
             votes: 1,
             date: dateTime,
-            tags: tagsList
+            tags: newList
+        }
+
+        if (!link.startsWith('https://') && !link.startsWith('http://')) {
+            var newLink = ('https://' + link)
+            post.link = newLink
         }
 
         writePost(id, post)
