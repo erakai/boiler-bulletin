@@ -1,7 +1,14 @@
+import React, { useState, useEffect } from 'react'
 import { Container, Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 
-function MenuBar({posts}) {
+function MenuBar({posts, setDisplayPosts}) {
+    const [searchTags, setSearchTags] = useState('')
+
+    useEffect(() => {
+        setDisplayPosts(posts)        
+    }, [posts, searchTags])
+
     return (
         <>
             <Navbar bg="light" variant="light" expand="lg">
