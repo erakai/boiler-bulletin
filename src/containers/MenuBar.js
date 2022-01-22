@@ -6,8 +6,23 @@ function MenuBar({posts, setDisplayPosts}) {
     const [searchTags, setSearchTags] = useState('')
 
     useEffect(() => {
-        setDisplayPosts(posts)        
+        console.log(searchTags)
+        if (searchTags == '') {
+            setDisplayPosts(posts)
+            return
+        }
+
+        var tagsList = searchTags.split(',')
+        tagsList.map(s => s.toLowerCase().trim())
+        
+        const filteredPosts = posts.filter(post => {
+            return post[1].tags.some(t => tagsList.includes(t))        })
+        setDisplayPosts(filteredPosts)        
     }, [posts, searchTags])
+
+    const submitSearch = (e) => {
+        setSearchTags(e.target.value)
+    }
 
     return (
         <>
@@ -16,15 +31,13 @@ function MenuBar({posts, setDisplayPosts}) {
                     <Navbar.Brand href="#home">
                         Boiler Bulletin
                     </Navbar.Brand>
-                    <Form className="d-flex">
                             <FormControl
                             type="search"
                             placeholder="Search"
                             className="me-3"
                             aria-label="Search"
-                            />
+                            onChange={submitSearch}/>
                             <Button variant="outline-success"><BsSearch /></Button>
-                    </Form>
                 </Container>
             </Navbar>
            

@@ -19,12 +19,12 @@ const PostButton = () => {
         var dateTime = date + ' ' + time
 
         //Temporary
-        var id = new Date().getTime();
+        var id = today.getTime();
 
         var tagsList = tags.split(',')
         tagsList.push(type)
         tagsList.push(title)
-        tagsList.map(s => s.trim())
+        tagsList.map(s => s.toLowerCase().trim())
             
         const post = {
             title: title,
