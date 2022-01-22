@@ -3,6 +3,7 @@ import MenuBar from './MenuBar';
 import PostManager from "./PostManager";
 import PostButton from '../components/PostButton';
 import { retrieveRealTimePosts } from '../utils/FirebaseManager';
+import Scroll from '../components/Scroll.js'
 
 function PostSystem(props) {
     const [posts, setPosts] = useState([])
@@ -10,14 +11,17 @@ function PostSystem(props) {
 
     useEffect(() => {
         retrieveRealTimePosts(setPosts)
-        console.log(posts)
     }, [])
 
     return (
         <div>
-            <MenuBar posts={posts} setDisplayPosts={setDisplayPosts}/>
-            <PostManager posts={displayPosts}/>
-            <div className='mt-5 mb-5'>
+            <div className='mb-5'>
+                <MenuBar posts={posts} setDisplayPosts={setDisplayPosts}/>
+            </div>
+            <Scroll>
+                <PostManager posts={displayPosts}/>
+            </Scroll>
+            <div className='mt-2 mb-0'>
                 <PostButton/>
             </div>
         </div>
