@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from './utils/Firebase.js';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
