@@ -36,6 +36,16 @@ const AddPostButton = () => {
             tags: newList
         }
 
+        if (type === '') {
+            if (link.includes('discord.gg')) {
+                post.type = 'Discord'
+            } else if (link.includes('groupme.com')) {
+                post.type = 'GroupMe'
+            } else {
+                post.type = 'Other'
+            }
+        }
+
         if (!link.startsWith('https://') && !link.startsWith('http://')) {
             var newLink = ('https://' + link)
             post.link = newLink
@@ -47,7 +57,7 @@ const AddPostButton = () => {
         setLink('')
         setDescription('')
         setTags('')
-        setType('GroupMe')
+        setType('')
     }
 
     //TODO: Put the dialogue in a separate componenet
@@ -74,8 +84,8 @@ const AddPostButton = () => {
                             <Form.Label>Tags</Form.Label>
                             <Form.Control required type='text' size='sm' placeholder='club, class, CS180, sport' onChange={e => setTags(e.target.value)}/>
                         </Form.Group>
-                        <Form.Group className='mb-3' controlId='formPostType'>
-                            <Form.Check type='switch' id='custom-switch' label='Discord? GroupMe by default' onChange={e => (e.target.value === 'on' ? 'Discord' : 'GroupMe')}/>
+                        <Form.Group className='mb-2' controlId='formPostType'>
+                            <Form.Check type='switch' id='custom-switch' label='Is this a Discord or GroupMe?' defaultChecked={true} onChange={e => {setType(e.target.value === 'on' ? '' : 'Other')}}/>
                         </Form.Group> 
                         <FloatingLabel controlId='formPostDescription' label='Description' className='mb-3'>
                             <Form.Control required as='textarea' placeholder='Description' style={{height: '200px'}} 

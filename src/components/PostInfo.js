@@ -7,7 +7,7 @@ const PostInfo = ({post}) => {
 
     return (
         <div>
-            <Button className='justify-content-center' variant='outline-info'
+            <Button size='sm' className='justify-content-center' variant='outline-info'
                 onClick={() => {setOpen(true)}}><AiOutlineInfoCircle/></Button>
 
             <Modal centered show={open} onHide={() => {setOpen(false)}}>

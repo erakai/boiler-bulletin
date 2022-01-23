@@ -17,7 +17,7 @@ function MenuBar({posts, setDisplayPosts}) {
         const filteredPosts = posts.filter(post => {
             return post[1].tags.some(t => 
                 newList.some(e => 
-                    t.startsWith(e)
+                    t.includes(e)
             ))})
 
         setDisplayPosts(filteredPosts)        
