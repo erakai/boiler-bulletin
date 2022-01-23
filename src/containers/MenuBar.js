@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Navbar, Form, FormControl, Button } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
+import { GrStatusInfo } from "react-icons/gr";
 
 function MenuBar({posts, setDisplayPosts}) {
     const [searchTags, setSearchTags] = useState('')
@@ -34,13 +34,13 @@ function MenuBar({posts, setDisplayPosts}) {
                     <Navbar.Brand href="#home">
                         Boiler Bulletin
                     </Navbar.Brand>
-                            <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-1"
-                            aria-label="Search"
-                            onChange={submitSearch}/>
-                            <Button variant="outline-success"><BsSearch /></Button>
+                    <FormControl
+                    type="search"
+                    placeholder="Search"
+                    className="me-3"
+                    aria-label="Search"
+                    onChange={submitSearch}/>
+                    <a className='btn btn-info' role='button' href='https://github.com/erakai/boiler-bulletin'><GrStatusInfo /></a>
                 </Container>
             </Navbar>
            
