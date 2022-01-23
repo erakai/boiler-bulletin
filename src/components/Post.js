@@ -7,7 +7,6 @@ import { updatePost, updateVote } from "../utils/FirebaseManager";
 import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import PostInfo from './PostInfo'
 import { getAuth } from 'firebase/auth';
-import { IconContext } from 'react-icons/lib';
 
 const enabled_vote = 'green'
 const disabled_vote = 'black'
@@ -16,8 +15,8 @@ const disabled_vote = 'black'
 
 const Post = ({postId, post, initalVoteState, voteId}) => {
     const [voteState, setVoteState] = useState(initalVoteState)
-    const [isDownVoted, setIsDownVoted] = useState((voteState == 2 ? enabled_vote : disabled_vote))
-    const [isUpVoted, setIsUpVoted] = useState((voteState == 1 ? enabled_vote : disabled_vote))
+    const [isDownVoted, setIsDownVoted] = useState((voteState == "down" ? enabled_vote : disabled_vote))
+    const [isUpVoted, setIsUpVoted] = useState((voteState == "up" ? enabled_vote : disabled_vote))
 
     const initialVote = post.votes
     
@@ -27,15 +26,7 @@ const Post = ({postId, post, initalVoteState, voteId}) => {
             post_id: postId,
             vote_state: _vote_state
         }
-
-        if (_vote_state == "up") {
-            setVoteState(1)
-        } else if (_vote_state == "down") {
-            setVoteState(2)
-        } else {
-            setVoteState(0)
-        }
-
+        setVoteState(_vote_state)
         updateVote(voteId, vote)
         setIsUpVoted(color_upvote)
         setIsDownVoted(color_downvote)
@@ -83,7 +74,6 @@ const Post = ({postId, post, initalVoteState, voteId}) => {
         } else {            
             updatePostVote("n/a", disabled_vote, disabled_vote, 1);
         }
-
     }
     
     return (

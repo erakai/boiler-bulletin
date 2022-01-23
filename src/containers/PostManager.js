@@ -52,18 +52,14 @@ function PostManager({posts}) {
             <Container flud="md">
             {
                 sortedPosts.sortedScores.map((score, i) => {
-                    var userVoteOnPost = 0;
+                    var userVoteOnPost = "n/a";
                     var voteId = (new Date()).getTime();
                     for (var j = 0; j < allVotes.length; j++) {
                         console.log(allVotes[j])
                         if (allVotes[j][1].user_id == getAuth().currentUser.uid) {
                             if (allVotes[j][1].post_id == sortedPosts.postDict[score][0]) {
                                 voteId = allVotes[j][0]
-                                if (allVotes[j][1].vote_state == "up") {
-                                    userVoteOnPost = 1;
-                                } else if (allVotes[j][1].vote_state == "down") {
-                                    userVoteOnPost = 2;
-                                }
+                                userVoteOnPost = allVotes[j][1].vote_state
                             }
                         }
                     }
