@@ -75,23 +75,27 @@ const USERS_VOTE_POSTS_LINK = 'users_vote_posts/'
 /*
 
 const vote = {
+    user_id:
     post_id:
     vote_state: ("up" or "down")
 }
 
 */
 
-export function writeVote(userId, vote) {
-    set(ref(db, USERS_VOTE_POSTS_LINK + userId), {
-        post_id: vote.post_id,
-        vote_state: vote.vote_state 
-    });
-}
-
-export function updateVote(userId, vote) {
+export function updateVote(voteId, vote) {
     var voteRef = ref(db)
     const updates = {}
-    updates[USERS_VOTE_POSTS_LINK + userId] = vote
+    updates[USERS_VOTE_POSTS_LINK + voteId] = vote
     update(voteRef, updates)
 }
+
+export function retrieveRealTimeVotes(updateVotes) {
+    const voteRef = ref(db, USERS_VOTE_POSTS_LINK);
+    onValue(voteRef, (snapshot) => {
+        const data = snapshot.val();
+        updateVotes(convertToArray(data))
+    })
+}
+
+
 
