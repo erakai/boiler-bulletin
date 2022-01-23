@@ -28,8 +28,15 @@ const Post = ({postId, post, initalVoteState, voteId}) => {
             vote_state: _vote_state
         }
 
+        if (_vote_state == "up") {
+            setVoteState(1)
+        } else if (_vote_state == "down") {
+            setVoteState(2)
+        } else {
+            setVoteState(0)
+        }
+
         updateVote(voteId, vote)
-        setVoteState(1)
         setIsUpVoted(color_upvote)
         setIsDownVoted(color_downvote)
         post.votes = initialVote + increment;
@@ -67,7 +74,7 @@ const Post = ({postId, post, initalVoteState, voteId}) => {
     }
 
     const onDownvote = () => {
-        if (!(isDownVoted == enabled_vote)) {
+        if ((isDownVoted != enabled_vote)) {
             if (isUpVoted == enabled_vote) {
                 updatePostVote("down", disabled_vote, enabled_vote, -2);
             } else {
