@@ -18,6 +18,8 @@ const post = {
 Eventually add tags, description, group size.
 */
 
+// ------------- POSTS ------------- 
+
 function convertToArray(json) {
     var array = [];
     for (var i in json) array.push([i, json[i]]);
@@ -65,3 +67,31 @@ export function retrieveAllPosts(updatePosts) {
         console.log(error);
     })
 }
+
+// ------------- USER_VOTE_POSTS ------------- 
+
+const USERS_VOTE_POSTS_LINK = 'users_vote_posts/'
+
+/*
+
+const vote = {
+    post_id:
+    vote_state: ("up" or "down")
+}
+
+*/
+
+export function writeVote(userId, vote) {
+    set(ref(db, USERS_VOTE_POSTS_LINK + userId), {
+        post_id: vote.post_id,
+        vote_state: vote.vote_state 
+    });
+}
+
+export function updateVote(userId, vote) {
+    var voteRef = ref(db)
+    const updates = {}
+    updates[USERS_VOTE_POSTS_LINK + userId] = vote
+    update(voteRef, updates)
+}
+

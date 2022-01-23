@@ -47,8 +47,7 @@ function PostManager({posts}) {
                     return (
                     <div key={i}>
                         <Row className="g-4">
-                            <Post postId={sortedPosts.postDict[score][0]} post={sortedPosts.postDict[score][1]}/>
-                        </Row>
+                            <Post postId={sortedPosts.postDict[score][0]} post={sortedPosts.postDict[score][1]}/>                        </Row>
                     </div> )
                 })
             }
