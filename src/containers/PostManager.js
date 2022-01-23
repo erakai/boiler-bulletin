@@ -61,7 +61,7 @@ function PostManager({posts}) {
                                 voteId = allVotes[j][0]
                                 if (allVotes[j][1].vote_state == "up") {
                                     userVoteOnPost = 1;
-                                } else if (allVotes[j].vote_state == "down") {
+                                } else if (allVotes[j][1].vote_state == "down") {
                                     userVoteOnPost = 2;
                                 }
                             }
