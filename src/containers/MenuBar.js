@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Navbar, Form, FormControl, Button } from "react-bootstrap";
+import { Container, Navbar, FormControl} from "react-bootstrap";
 import { GrStatusInfo } from "react-icons/gr";
 
 function MenuBar({posts, setDisplayPosts}) {
     const [searchTags, setSearchTags] = useState('')
 
     useEffect(() => {
-        if (searchTags == '') {
+        if (searchTags === '') {
             setDisplayPosts(posts)
             return
         }
@@ -21,7 +21,7 @@ function MenuBar({posts, setDisplayPosts}) {
             ))})
 
         setDisplayPosts(filteredPosts)        
-    }, [posts, searchTags])
+    }, [posts, searchTags, setDisplayPosts])
 
     const submitSearch = (e) => {
         setSearchTags(e.target.value)
@@ -37,7 +37,7 @@ function MenuBar({posts, setDisplayPosts}) {
                     <FormControl
                     type="search"
                     placeholder="Search"
-                    className="me-3"
+                    className="me-3" 
                     aria-label="Search"
                     onChange={submitSearch}/>
                     <a className='btn btn-info' role='button' href='https://github.com/erakai/boiler-bulletin'><GrStatusInfo /></a>

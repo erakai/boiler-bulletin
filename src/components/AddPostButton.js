@@ -8,7 +8,7 @@ const AddPostButton = () => {
     const [link, setLink] = useState('')
     const [description, setDescription] = useState('')
     const [tags, setTags] = useState('')
-    const [type, setType] = useState('GroupMe')
+    const [type, setType] = useState('')
 
     const onSubmit = () => {
         setOpen(false)
