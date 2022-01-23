@@ -40,7 +40,6 @@ function PostManager({posts}) {
         }
     }, [posts])
 
-    
     return (
         <div>
             <br />
