@@ -7,7 +7,7 @@ function getPostsWithScore(posts) {
     var postsWithScore = {};
     var score = 0;
     for (var i = 0; i < posts.length; i++) {
-        score = PostAlg(posts[i][1].votes, 0, posts[i][1].date, posts[i][1].date) + Math.floor(Math.random() * 100);
+        score = PostAlg(posts[i][1].votes, 0, posts[i][1].date, posts[i][1].date) + Math.random() * (.001 - .0001) + .0001;
         postsWithScore[score] = posts[i];
     }
     return postsWithScore;
