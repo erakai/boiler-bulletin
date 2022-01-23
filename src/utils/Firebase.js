@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
-import { MdExitToApp } from "react-icons/md";
 
 // Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -16,7 +15,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 const auth = getAuth();
 signInAnonymously(auth)
