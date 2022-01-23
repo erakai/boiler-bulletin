@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Button, Form, FloatingLabel } from 'react-bootstrap'
 import { writePost } from '../utils/FirebaseManager.js'
 
-const PostButton = () => {
+const AddPostButton = () => {
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
     const [link, setLink] = useState('')
@@ -75,7 +75,7 @@ const PostButton = () => {
                             <Form.Control required type='text' size='sm' placeholder='club, class, CS180, sport' onChange={e => setTags(e.target.value)}/>
                         </Form.Group>
                         <Form.Group className='mb-3' controlId='formPostType'>
-                            <Form.Check type='switch' id='custom-switch' label='Discord? GroupMe by default' onChange={e => (e.target.value == 'on' ? 'Discord' : 'GroupMe')}/>
+                            <Form.Check type='switch' id='custom-switch' label='Discord? GroupMe by default' onChange={e => (e.target.value === 'on' ? 'Discord' : 'GroupMe')}/>
                         </Form.Group> 
                         <FloatingLabel controlId='formPostDescription' label='Description' className='mb-3'>
                             <Form.Control required as='textarea' placeholder='Description' style={{height: '200px'}} 
@@ -92,4 +92,4 @@ const PostButton = () => {
     )
 }
 
-export default PostButton;
+export default AddPostButton;

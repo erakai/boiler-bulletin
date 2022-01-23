@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Container } from "react-bootstrap";
 import Post from "../components/Post";
 import PostAlg from "../utils/PostAlg";
 
@@ -24,9 +24,7 @@ function PostManager({posts}) {
     };
 
     useEffect(() => {
-        console.log("UPDATED DICTIONARY AND SCORES")
         var scores = getPostsWithScore(posts)
-        console.log(scores)
         setSortedPosts({
             postDict: scores,
             sortedScores: Object.keys(scores).sort(numberSort).reverse() 

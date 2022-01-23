@@ -3,6 +3,7 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import logo from "../assets/logo.svg"
 import { updatePost } from "../utils/FirebaseManager";
 import { MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import PostInfo from './PostInfo'
 
 const Post = ({postId, post}) => {
     const [hasVoted, setVoted] = useState(false)
@@ -40,7 +41,10 @@ const Post = ({postId, post}) => {
                             className="img-fluid"
                             />{' '}
                         </Col>                        
-                        <Col className="border"><a href={post.link}>{post.title}</a></Col>
+                        <Col className="border">
+                            <a href={post.link}>{post.title}</a>
+                            <PostInfo post={post}/>
+                        </Col>
                         <Col xs lg="2" className="border ml-auto">
                             <Button variant="primary-outline"  onClick={onUpvote} disabled={hasVoted}><MdOutlineKeyboardArrowUp /></Button>
                             <span className="text-right">{post.votes}</span>
