@@ -12,11 +12,11 @@ function MenuBar({posts, setDisplayPosts}) {
         }
 
         var tagsList = searchTags.split(',')
-        var newList = tagsList.map(s => s.toLowerCase().trim())
+        var searchList = tagsList.map(s => s.toLowerCase().trim())
         
         const filteredPosts = posts.filter(post => {
-            return post[1].tags.some(t => 
-                newList.some(e => 
+            return searchList.every(e => 
+                post[1].tags.some(t => 
                     t.includes(e)
             ))})
 

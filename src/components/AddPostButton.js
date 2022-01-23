@@ -22,7 +22,6 @@ const AddPostButton = () => {
         var id = today.getTime();
 
         var tagsList = tags.split(',')
-        tagsList.push(type)
         tagsList.push(title)
         var newList = tagsList.map(s => s.toLowerCase().trim())
 
@@ -44,6 +43,8 @@ const AddPostButton = () => {
             } else {
                 post.type = 'Other'
             }
+
+            post.tags.push(post.type.toLowerCase().trim())
         }
 
         if (!link.startsWith('https://') && !link.startsWith('http://')) {
